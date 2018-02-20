@@ -1,10 +1,11 @@
 let Router = require('koa-router');
-let myRouter = new Router();
+let insertBlog = new Router();
 
 const conn = require('../dbs/connection');
 
-myRouter.get('/',async function (ctx){
-    ctx.body = await conn.findAllPost();
+insertBlog.post('/insertBlog', async function (ctx) {
+    const moment = new Date().getTime();
+    ctx.body = await conn.insertPost([ctx.request.body.name, ctx.request.body.title, ctx.request.body.content, ctx.request.body.uid, moment]);
 });
 
-module.exports = myRouter;
+module.exports = insertBlog;

@@ -74,7 +74,7 @@ let insertPost = function (value) {
 };
 
 let updatePostComment = function (value) {
-    let _sql = "update posts set comment=? where id=?";
+    let _sql = "update posts set comments=? where id=?";
     return query(_sql, value);
 };
 
